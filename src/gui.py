@@ -305,7 +305,9 @@ class GUI(wx.Frame,Generator):
 				if datos == 'Random':
 					dato = '[0:100]'
 				elif datos == 'Personalizado':
-					dato = '[]'
+					dato = '[1-2-3]'
+				elif datos == 'DATE':
+					dato = 'DATE(1990>2000)'
 				else:
 					dato = datos
 			else:

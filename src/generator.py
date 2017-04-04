@@ -57,11 +57,16 @@ class Generator(FileManager):
 
 	def preparar_consulta(self,pos_sql,data):
 		sql = pos_sql
+		f = ''
+		if pos_sql != '':
+			f = ');'
+
 		query = ''
 		for row in data:
 			query = query + str(row) + ','
 		query = query.rstrip(',')
-		sql = sql + query + ');'
+		sql = sql + query + f
+
 		return sql
 	
 	def before_buil(self,data):
@@ -113,7 +118,7 @@ class Generator(FileManager):
 			mes = random.randint(1,12)
 			dia = random.randint(1,31)
 			if data.count('>') == 1:
-				print(data)
+				#print(data)
 				array = data.split('>')
 				ini = int(array[0])
 				fin = int(array[1])
@@ -144,4 +149,7 @@ class Generator(FileManager):
 					data = data.replace(".txt","")
 				else:
 					data = random.choice(array1)
+					if data.count(' ') > 0:
+						array2 = data.split(' ')
+						data = array2[0]
 		return data
